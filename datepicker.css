@@ -1,0 +1,60 @@
+/* Styles for the DatePicker */
+#datepicker1, #datepicker2 {
+    max-width: fit-content;
+}
+
+.header {
+    grid-column: span 7; /* Header spans all columns */
+    text-align: center;
+    font-weight: bold;
+    margin-bottom: 8px;
+    display: flex;
+    justify-content: space-between;
+}
+
+.header span {
+    min-width: 110px;
+}
+
+.daysRow{
+    display: grid;
+    grid-template-columns: repeat(7, 1fr);
+    margin-bottom: 8px;
+    text-align: center;
+}
+
+.dayOfWeek {
+    min-width: 34px;
+}
+
+.daysGrid {
+    display: grid;
+    grid-template-columns: repeat(7, 1fr);
+    gap: 4px;
+}
+
+.nav-button {
+    background: none;
+    border: none;
+    cursor: pointer;
+    font-size: 16px;
+    padding: 0 10px;
+    user-select: none;
+}
+
+.datepicker-day {
+    text-align: center;
+    padding: 8px;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: background-color 0.2s ease;
+}
+
+.datepicker-day:hover {
+    background-color: #f0f0f0;
+}
+
+.datepicker-day.selected {
+    background-color: #007bff;
+    color: #fff;
+}
