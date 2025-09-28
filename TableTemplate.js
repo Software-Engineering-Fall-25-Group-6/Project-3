@@ -19,7 +19,7 @@ class TableTemplate {
             }
         }
 
-        // If columnName given but not found, stop after headers
+        // If column not found, make table visible and exit
         if (columnName && colIndex === -1) {
             TableTemplate._makeVisible(table);
             return;
@@ -42,6 +42,7 @@ class TableTemplate {
             }
         }
 
+        // Finally, ensure the table is visible
         TableTemplate._makeVisible(table);
     }
 
