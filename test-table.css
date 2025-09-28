@@ -1,13 +1,196 @@
-/* CSS styles for project 3. */
+/* Project 3 Stylesheet */
 
-body {font-family: Tahoma, Arial, sans-serif; font-size: 13px;
-    color: #000000; background: #ffffff; margin: 8px;}
+/* Design tokens (easy to tweak) */
+:root {
+  --bg: #f6f8fb;
+  --text: #0f172a;
+  --muted: #667085;
+  --primary: #3b82f6;     /* blue-500 */
+  --primary-ink: #ffffff;
+  --surface: #ffffff;
+  --surface-alt: #f1f5f9;
+  --border: #e5e7eb;
+  --header: #334155;      /* slate-700 */
+  --stripe: #f8fafc;      /* very light row */
+  --stripe-alt: #eef2f7;  /* alt stripe */
+  --shadow: 0 8px 20px rgba(15, 23, 42, 0.06);
+  --radius: 12px;
+}
 
-/* Styles for sample tables: */
+/* Base */
+*,
+*::before,
+*::after { box-sizing: border-box; }
 
-.example {display: inline-block;}
-.example td {padding: 2px 10px 2px 10px; border-top: 1px solid #FFFFFF;
-    vertical-align: top; background: #eeeff2;}
-.example tr:nth-child(odd) td {background: #dfe1e7;}
-.example tr:first-child td {border-top: none; background: #687291;
-    color: #ffffff; white-space: nowrap;}
+html { font-size: 16px; }
+
+body {
+  font-family: Tahoma, Arial, sans-serif;
+  font-size: 0.9375rem; /* ~15px for readability */
+  line-height: 1.5;
+  color: var(--text);
+  background: linear-gradient(180deg, var(--bg), #ffffff 60%);
+  margin: 16px;
+  padding: 16px;
+}
+
+/* Optional page container (use if you wrap content) */
+.container {
+  max-width: 1100px;
+  margin-inline: auto;
+  padding: 16px;
+}
+
+/* Headings */
+h1, h2, h3 {
+  color: var(--header);
+  letter-spacing: 0.2px;
+  margin: 0 0 0.6em 0;
+}
+h1 { font-size: clamp(1.4rem, 2.5vw, 1.875rem); }
+h2 { font-size: clamp(1.15rem, 2vw, 1.5rem); color: var(--muted); }
+
+/* Links & focus states */
+a {
+  color: var(--primary);
+  text-decoration: none;
+}
+a:hover { text-decoration: underline; }
+:focus-visible {
+  outline: 3px solid color-mix(in srgb, var(--primary) 40%, transparent);
+  outline-offset: 2px;
+  border-radius: 6px;
+}
+
+/* ---------- Tables: `.example` ---------- */
+/* Keep your `.example` class but enhance look and semantics */
+.example {
+  display: inline-block;                 /* keep your original intent */
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  box-shadow: var(--shadow);
+  overflow: hidden;                      /* rounds header corners */
+  margin: 12px;
+}
+
+/* Support both table markup and your original cell rules */
+.example table {
+  border-collapse: collapse;
+  width: 100%;
+  min-width: 520px;                      /* helpful if you have many columns */
+}
+
+/* Caption (if used) */
+.example caption {
+  caption-side: top;
+  text-align: left;
+  padding: 14px 16px;
+  font-weight: 700;
+  color: var(--header);
+  background: linear-gradient(180deg, var(--surface), var(--surface-alt));
+  border-bottom: 1px solid var(--border);
+}
+
+/* Header row (matches your first-row styling but modernized) */
+.example tr:first-child td,
+.example thead th {
+  background: linear-gradient(180deg, #6a7ca2, #596885);
+  color: var(--primary-ink);
+  font-weight: 700;
+  border-top: none;
+  white-space: nowrap;
+  letter-spacing: 0.3px;
+  padding: 12px 16px;
+}
+
+/* Data cells */
+.example td,
+.example th {
+  padding: 10px 16px;
+  vertical-align: top;
+  border-top: 1px solid var(--border);
+  background: var(--surface);
+  font-variant-numeric: tabular-nums;
+}
+
+/* Zebra striping – softer palette */
+.example tr:nth-child(odd) td { background: var(--stripe); }
+.example tr:nth-child(even) td { background: var(--stripe-alt); }
+
+/* Hover effect (table body only) */
+.example tbody tr:hover td {
+  background: color-mix(in srgb, var(--primary) 8%, var(--surface));
+}
+
+/* Row selection via [aria-selected] if you add it */
+.example tr[aria-selected="true"] td {
+  background: color-mix(in srgb, var(--primary) 15%, var(--surface));
+  outline: 1px solid color-mix(in srgb, var(--primary) 30%, transparent);
+}
+
+/* Compact variant (apply `.example example--compact`) */
+.example.example--compact td,
+.example.example--compact th {
+  padding: 8px 12px;
+}
+
+/* Responsive scroll if too narrow */
+.example-wrap {
+  max-width: 100%;
+  overflow-x: auto;
+  padding-bottom: 6px;
+}
+
+/* Subtle badges (use in cells if needed) */
+.badge {
+  display: inline-block;
+  padding: 2px 8px;
+  border-radius: 999px;
+  background: var(--surface-alt);
+  border: 1px solid var(--border);
+  font-size: 0.8125rem;
+  line-height: 1.6;
+  color: var(--header);
+}
+
+/* Buttons (if you add actions near tables) */
+.button {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 10px 14px;
+  border-radius: 10px;
+  border: 1px solid var(--border);
+  background: var(--surface);
+  color: var(--header);
+  cursor: pointer;
+  box-shadow: var(--shadow);
+  transition: transform 120ms ease, box-shadow 120ms ease, background 120ms ease;
+}
+.button:hover {
+  transform: translateY(-1px);
+  box-shadow: 0 10px 24px rgba(15, 23, 42, 0.08);
+}
+.button--primary {
+  background: var(--primary);
+  color: var(--primary-ink);
+  border-color: transparent;
+}
+.button--ghost {
+  background: transparent;
+}
+
+/* Small helper utilities */
+.m-0 { margin: 0 !important; }
+.mt-2 { margin-top: 0.5rem !important; }
+.mt-4 { margin-top: 1rem !important; }
+.mb-4 { margin-bottom: 1rem !important; }
+.p-4 { padding: 1rem !important; }
+
+/* Print tweaks (keep tables clean) */
+@media print {
+  body { background: #ffffff; }
+  .example { box-shadow: none; }
+  a { text-decoration: underline; }
+}
