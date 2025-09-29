@@ -1,6 +1,12 @@
 /* Styles for the DatePicker */
 #datepicker1, #datepicker2 {
-    max-width: fit-content;
+    max-width: fit-content;  
+    background: linear-gradient(to bottom, #ffffff, #e6e6e6);
+    border: 1px solid #ccc; 
+    border-radius: 16px; 
+    padding: 16px; 
+    font-family: Arial, sans-serif; 
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); 
 }
 
 .header {
@@ -9,11 +15,13 @@
     font-weight: bold;
     margin-bottom: 8px;
     display: flex;
-    justify-content: space-between;
+    justify-content: space-between; 
+    align-items: center;
 }
 
 .header span {
-    min-width: 110px;
+    min-width: 110px; 
+    margin: 0 16px;
 }
 
 .daysRow{
@@ -38,20 +46,27 @@
     border: none;
     cursor: pointer;
     font-size: 16px;
-    padding: 0 10px;
-    user-select: none;
+    padding: 0 12px;
+    user-select: none; 
+    border-radius: 4px;  
+    box-shadow: 0 1px 2px rgba(0, 0, 0, 0.543);
 }
-
+.nav-button:hover {
+    background-color: #f0f0f0;
+}
 .datepicker-day {
     text-align: center;
     padding: 8px;
     border-radius: 4px;
     cursor: pointer;
-    transition: background-color 0.2s ease;
+    transition: background-color 0.2s ease; 
+    border: 1px solid #ccc; 
+    background-color: #fff; 
+    box-sizing: border-box;
 }
 
 .datepicker-day:hover {
-    background-color: #f0f0f0;
+    background-color: #ae74d8;
 }
 
 .datepicker-day.selected {
